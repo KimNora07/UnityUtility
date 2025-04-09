@@ -8,77 +8,83 @@ using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// Dotween의 기능을 개발
+/// Dotween의 기능을 참고하여 개발
 /// </summary>
-public class AnimationManager : MonoBehaviour
+public static class AnimationManager
 {
     #region Animations
+
     /// <summary>
     /// 이동 애니메이션
     /// </summary>
+    /// <param name="runner"></param>
     /// <param name="rect">오브젝트</param>
     /// <param name="duration">지속시간</param>
     /// <param name="delay">지연시간</param>
     /// <param name="toMove">이동할 위치</param>
     /// <param name="onPlay">시작했을 때 실행할 행동</param>
     /// <param name="onComplete">끝났을 때 실행할 행동</param>
-    public void MoveAnimation(RectTransform rect, float duration, float delay, Vector2 toMove, Action onPlay = null, Action onComplete = null)
+    public static void MoveAnimation(MonoBehaviour runner, RectTransform rect, float duration, float delay, Vector2 toMove, Action onPlay = null, Action onComplete = null)
     {
-        StartCoroutine(Move(rect, duration, delay, toMove, onPlay, onComplete));
+        runner.StartCoroutine(Move(rect, duration, delay, toMove, onPlay, onComplete));
     }
-    
+
     /// <summary>
     /// 페이드 인 애니메이션
     /// </summary>
+    /// <param name="runner"></param>
     /// <param name="graphic">이미지 또는 텍스트</param>
     /// <param name="duration">지속시간</param>
     /// <param name="delay">지연시간</param>
     /// <param name="color">색상</param>
     /// <param name="onPlay">시작했을 때 실행할 행동</param>
     /// <param name="onComplete">끝났을 때 실행할 행동</param>
-    public void FadeInAnimation(Graphic graphic, float duration, float delay, Color color, Action onPlay, Action onComplete)
+    public static void FadeInAnimation(MonoBehaviour runner, Graphic graphic, float duration, float delay, Color color, Action onPlay, Action onComplete)
     {
-        StartCoroutine(FadeIn(graphic, duration, delay, color, onPlay, onComplete));
+        runner.StartCoroutine(FadeIn(graphic, duration, delay, color, onPlay, onComplete));
     }
-    
+
     /// <summary>
     /// 페이드 아웃 애니메이션
     /// </summary>
+    /// <param name="runner"></param>
     /// <param name="graphic">이미지 또는 텍스트</param>
     /// <param name="duration">지속시간</param>
     /// <param name="delay">지연시간</param>
     /// <param name="color">색상</param>
     /// <param name="onPlay">시작했을 때 실행할 행동</param>
     /// <param name="onComplete">끝났을 때 실행할 행동</param>
-    public void FadeOutAnimation(Graphic graphic, float duration, float delay, Color color, Action onPlay, Action onComplete)
+    public static void FadeOutAnimation(MonoBehaviour runner, Graphic graphic, float duration, float delay, Color color, Action onPlay, Action onComplete)
     {
-        StartCoroutine(FadeOut(graphic, duration, delay, color, onPlay, onComplete));
+        runner.StartCoroutine(FadeOut(graphic, duration, delay, color, onPlay, onComplete));
     }
-    
+
     /// <summary>
     /// 슬라이드 애니메이션
     /// </summary>
+    /// <param name="runner"></param>
     /// <param name="image">이미지</param>
     /// <param name="duration">지속시간</param>
     /// <param name="delay">지연시간</param>
     /// <param name="onPlay">시작했을 때 실행할 행동</param>
     /// <param name="onComplete">끝났을 때 실행할 행동</param>
-    public void SlideAnimation(Image image, float duration, float delay, Action onPlay, Action onComplete)
+    public static void SlideAnimation(MonoBehaviour runner, Image image, float duration, float delay, Action onPlay, Action onComplete)
     {
-        StartCoroutine(ImageSlide(image, duration, delay, onPlay, onComplete));    
+        runner.StartCoroutine(ImageSlide(image, duration, delay, onPlay, onComplete));    
     }
-    
+
     /// <summary>
     /// 스케일 애니메이션
     /// </summary>
+    /// <param name="runner"></param>
     /// <param name="obj">오브젝트</param>
     /// <param name="duration">지속시간</param>
     /// <param name="delay">지연시간</param>
     /// <param name="onPlay">시작했을 때 실행할 행동</param>
     /// <param name="onComplete">끝났을 때 실행할 행동</param>
-    public void ScaleAnimation(GameObject obj, float duration, float delay, Action onPlay, Action onComplete)
+    public static void ScaleAnimation(MonoBehaviour runner, GameObject obj, float duration, float delay, Action onPlay, Action onComplete)
     {
-        StartCoroutine(ScaleY(obj, duration, delay, onPlay, onComplete));
+        runner.StartCoroutine(ScaleY(obj, duration, delay, onPlay, onComplete));
     }
     #endregion
     
