@@ -8,10 +8,15 @@ public static class SceneLoader
     /// <summary>
     /// 비동기 씬 전환
     /// </summary>
+    /// <param name="runner"></param>
     /// <param name="sceneName">이동할 씬</param>
     /// <param name="onComplete">씬 이동이 완료되었을 때의 이벤트</param>
-    /// <returns></returns>
-    public static IEnumerator LoadSceneAsync(string sceneName, Action onComplete = null)
+    public static void LoadSceneAsync(MonoBehaviour runner, string sceneName, Action onComplete = null)
+    {
+        runner.StartCoroutine(LoadSceneAsync(sceneName, onComplete));
+    }
+    
+    private static IEnumerator LoadSceneAsync(string sceneName, Action onComplete = null)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         
