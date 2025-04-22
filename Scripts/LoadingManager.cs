@@ -1,83 +1,35 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class LoadingManager : MonoBehaviour
+public static class SceneLoader 
 {
-    private static string nextScene = null;     // ÀÌµ¿ÇÒ ´ÙÀ½ ¾ÀÀÇ ÀÌ¸§À» ÀúÀåÇÏ´Â º¯¼ö
-    private static float loadingProgress = 0f;  // ·Îµù ÁøÇà »óÈ²
-
     /// <summary>
-    /// ÀÌµ¿ÇÒ ´ÙÀ½ ¾ÀÀÇ ÀÌ¸§À» ÀúÀåÇÏ°í, ·Îµù¾ÀÀ¸·Î ÀüÈ¯
+    /// ë¹„ë™ê¸° ì”¬ ì „í™˜
     /// </summary>
-    /// <param name="sceneName">ÀÌµ¿ÇÒ ´ÙÀ½ ¾ÀÀÇ ÀÌ¸§</param>
-    /// <param name="loadingScene">·Îµù ¾À ÀÌ¸§</param>
-    public static void LoadScene(string sceneName = null, string loadingScene = null)
+    /// <param name="sceneName">ì´ë™í•  ì”¬</param>
+    /// <param name="onComplete">ì”¬ ì´ë™ì´ ì™„ë£Œë˜ì—ˆì„ ë•Œì˜ ì´ë²¤íŠ¸</param>
+    /// <returns></returns>
+    public static IEnumerator LoadSceneAsync(string sceneName, Action onComplete = null)
     {
-        nextScene = sceneName;
-        SceneManager.LoadScene(loadingScene);
-    }
-
-    /// <summary>
-    /// ·Îµù ±¸Çö ÄÚ·çÆ¾
-    /// </summary>
-    /// <returns>yield return null : 1ÇÁ·¹ÀÓ Áö¿¬</returns>
-    public static IEnumerator CoLoadSceneProgress()
-    {
-        // ºñµ¿±â ¾À ÀüÈ¯ ¹æ½ÄÀ¸·Î nextSceneÀ¸·Î ÀÌµ¿
-        AsyncOperation oper = SceneManager.LoadSceneAsync(nextScene);
-        oper.allowSceneActivation = false;
-
-        float time = 0f;
-
-        // ¾À ÀüÈ¯ÀÌ ÁØºñµÉ ¶§ ±îÁö ·çÇÁ
-        while (!oper.isDone)
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        
+        if (operation != null)
         {
-            yield return null;
+            operation.allowSceneActivation = false;
 
-            // progress°¡ 0.9 ÀÌÀü±îÁö´Â loadingProgress¿¡ progress¸¦ ¹ŞÀ½
-            // 0.9 ÀÌ»óÀÌ µÇ¾úÀ» °æ¿ì¿¡´Â Á÷Á¢ loadingProgres°¡ 0.9 ~ 1±îÁö ¹ŞÀ½
-            // loadingProgress°¡ 1ÀÌ»óÀÌ µÇ¾úÀ» °æ¿ì¿¡´Â ¾À È°¼ºÈ­ ¿©ºÎ¸¦ true·Î ¹İÈ¯
-            if (oper.progress < 0.9f)
+            // ë¡œë”© 90% ë„ë‹¬ í›„ ëŒ€ê¸°
+            while (operation.progress < 0.9f)
             {
-                loadingProgress = oper.progress;
+                yield return null;
             }
-            else
-            {
-                time += Time.unscaledDeltaTime;
-                loadingProgress = Mathf.Lerp(0.9f, 1f, time);
-                if (loadingProgress >= 1f)
-                {
-                    oper.allowSceneActivation = true;
-                    yield break;
-                }
-            }
-        }
-    }
 
-    /// <summary>
-    /// ¹öÆ°¿¡ Å¬¸¯ÀÌº¥Æ®¸¦ ÁÖ°í LoadScene ¸Ş¼Òµå¸¦ ½ÇÇà
-    /// </summary>
-    /// <param name="button">Å¬¸¯ ÀÌº¥Æ®¸¦ ÁÙ ¹öÆ°</param>
-    /// <param name="sceneName">ÀÌµ¿ÇÒ ´ÙÀ½ ¾ÀÀÇ ÀÌ¸§</param>
-    /// <param name="loadingScene">·Îµù ¾À ÀÌ¸§</param>
-    public static void LoadScene(string sceneName = null, string loadingScene = null, Button button = null)
-    {
-        button.onClick.AddListener(delegate { LoadScene(sceneName, loadingScene); });
-    }
-
-    /// <summary>
-    /// ÁÂÅ¬¸¯ÇßÀ»¶§ LoadScene ¸Ş¼Òµå¸¦ ½ÇÇà
-    /// </summary>
-    /// <param name="sceneName">ÀÌµ¿ÇÒ ´ÙÀ½ ¾ÀÀÇ ÀÌ¸§</param>
-    /// <param name="loadingScene">·Îµù ¾À ÀÌ¸§</param>
-    /// <param name="useClick">Å¬¸¯À» »ç¿ëÇÏ¿© ¾ÀÀ» ·ÎµåÇÒÁö¿¡ ´ëÇÑ ¿©ºÎ</param>
-    public static void LoadScene(string sceneName = null, string loadingScene = null, bool useClick = false)
-    {
-        if (useClick && Input.GetMouseButtonDown(0))
-        {
-            LoadScene(sceneName, loadingScene);
+            // ë¡œë”© ì™„ë£Œ ì²˜ë¦¬ 
+            yield return new WaitForSeconds(1f); 
+            operation.allowSceneActivation = true;
         }
+
+        onComplete?.Invoke();
     }
 }
