@@ -10,7 +10,7 @@ using TMPro;
 /// <summary>
 /// Dotween의 기능을 참고하여 개발
 /// </summary>
-public static class AnimationManager
+public static class AnimationUtility
 {
     #region Animations
 
