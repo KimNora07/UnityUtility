@@ -1,0 +1,16 @@
+{
+  "name": "com.kimnora07.unityutility",
+  "version": "1.0.0",
+  "displayName": "UnityUtility",
+  "description": "Unity 개발할 때 유용한 유틸리티들이 담겨 있습니다.",
+  "unity": "2019.4",
+  "author": {
+    "name": "nora",
+    "url": "https://github.com/KimNora07/UnityUtility"
+  },
+  "keywords": [
+    "animation",
+    "sceneLoader",
+    "unity"
+  ]
+}
