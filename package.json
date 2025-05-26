@@ -2,15 +2,24 @@
   "name": "com.kimnora07.unityutility",
   "version": "1.0.0",
   "displayName": "UnityUtility",
-  "description": "Unity 개발할 때 유용한 유틸리티들이 담겨 있습니다.",
-  "unity": "2019.4",
-  "author": {
-    "name": "nora",
-    "url": "https://github.com/KimNora07/UnityUtility"
+  "description": "유니티에서 유용하게 사용 가능한 유틸리티 입니다.",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "documentationUrl": "https://example.com/",
+  "changelogUrl": "https://example.com/changelog.html",
+  "licensesUrl": "https://example.com/licensing.html",
+  "dependencies": {
+    "com.unity.some-package": "1.0.0",
+    "com.unity.other-package": "2.0.0"
   },
   "keywords": [
-    "animation",
-    "sceneLoader",
-    "unity"
-  ]
+    "keyword1",
+    "keyword2",
+    "keyword3"
+  ],
+  "author": {
+    "name": "nora",
+    "email": "gimnora01@gmail.com",
+    "url": "https://github.com/KimNora07/UnityUtility.git"
+  }
 }
