@@ -1,4 +1,7 @@
-(English version)
+# MIT 라이선스
+
+## English Version
+
 The MIT License (MIT)
 
 Copyright (c) 2025 KimNora07
@@ -21,7 +24,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-(Translation)
+## Transition
+
 MIT 라이선스(MIT)
 
 저작권 (c) 2025 KimNora07
