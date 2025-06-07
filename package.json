@@ -1,16 +1,25 @@
 {
-  "name": "com.kimnora07.unityutility",
+  "name": "com.unity.unityutility",
   "version": "1.0.0",
   "displayName": "UnityUtility",
-  "description": "Unity 에디터에서만 사용할 수 있는 유틸도구입니다.",
-  "unity": "2019.4",
-  "author": {
-    "name": "nora",
-    "url": "https://github.com/KimNora07/UnityUtility"
+  "description": "노라의 유틸리티 저장소",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "documentationUrl": "https://example.com/",
+  "changelogUrl": "https://example.com/changelog.html",
+  "licensesUrl": "https://example.com/licensing.html",
+  "dependencies": {
+    "com.unity.some-package": "1.0.0",
+    "com.unity.other-package": "2.0.0"
   },
   "keywords": [
-    "animation",
-    "sceneloader",
-    "unity"
-  ]
+    "keyword1",
+    "keyword2",
+    "keyword3"
+  ],
+  "author": {
+    "name": "Unity",
+    "email": "unity@example.com",
+    "url": "https://www.unity3d.com"
+  }
 }
