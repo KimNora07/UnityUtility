@@ -8,10 +8,7 @@
   "documentationUrl": "https://example.com/",
   "changelogUrl": "https://example.com/changelog.html",
   "licensesUrl": "https://example.com/licensing.html",
-  "dependencies": {
-    //"com.unity.some-package": "1.0.0",
-    //"com.unity.other-package": "2.0.0"
-  },
+  "dependencies": {},
   "keywords": [
     "unityutils",
     "animation",
