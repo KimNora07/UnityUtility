@@ -19,6 +19,32 @@ Unity Package Manager를 사용하여 패키지를 설치할 수 있습니다.
 https://github.com/KimNora07/UnityUtility.git
 
 ## 사용법 예제
+```csharp
+using UnityEngine;
+using UnityEngine.UI;
+
+// 네임스페이스 추가(중요!)
+using KimNora07.UnityUtility;
+
+public class Example : MonoBehaviour
+{
+    public RectTransform targetRect;
+    public Image targetImage;
+
+    void Start()
+    {
+        // UI 이동 애니메이션 예제
+        UIAnimation.Move(targetRect, this, 1.0f, 0.0f, new Vector2(100, 100), 
+            onPlay: () => Debug.Log("애니메이션 시작!"), 
+            onComplete: () => Debug.Log("애니메이션 완료!"));
+
+        // 페이드 애니메이션 예제
+        UIAnimation.Fade(targetImage, this, Color.white, 0f, 1f, 1.0f, 0.0f,
+            onPlay: () => Debug.Log("페이드 시작!"),
+            onComplete: () => Debug.Log("페이드 완료!"));
+    }
+}
+```
 
 ## 라이선스
 이 패키지는 MIT 라이선스를 따릅니다. 자세한 내용은 LICENSE 파일을 참고하시기 바랍니다.
