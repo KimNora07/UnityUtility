@@ -45,14 +45,14 @@ namespace Utils.Animation.Helper
             Func<float, float> easingFunc = null)
         {
             if (delay > 0f)
-                yield return new WaitForSeconds(delay);
+                yield return new WaitForSecondsRealtime(delay);
 
             onPlay?.Invoke();
 
             float elapsed = 0f;
             while (elapsed < duration)
             {
-                elapsed += Time.deltaTime;
+                elapsed += Time.unscaledDeltaTime;
                 float t = Mathf.Clamp01(elapsed / duration);
                 float easedT = easingFunc?.Invoke(t) ?? t;
                 onUpdate?.Invoke(easedT);

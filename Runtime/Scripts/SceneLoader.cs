@@ -31,7 +31,7 @@ public static class SceneLoader
             }
 
             // 로딩 완료 처리 
-            yield return new WaitForSeconds(1f); 
+            yield return new WaitForSecondsRealtime(1f); 
             operation.allowSceneActivation = true;
         }
 
